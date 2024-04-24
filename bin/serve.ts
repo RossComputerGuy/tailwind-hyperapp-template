@@ -1,4 +1,9 @@
 #!/usr/bin/env node
 
-import path from 'path';
-import(path.join(new URL('.', import.meta.url).pathname, '..', 'server.cjs'));
+import { fileURLToPath } from 'url';
+import { dirname, extname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+import(join(__dirname, '..', `server${extname(__filename)}`));

@@ -1,10 +1,14 @@
 import { getPort } from 'get-port-please';
-import { join } from 'path';
+import { dirname, join } from 'path';
 import { renderToString } from 'hyperapp-render';
 import express from 'express';
+import { fileURLToPath } from 'url';
 import logger from './logger';
 import { isDev } from './config';
 import { routes } from './app';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 
