@@ -48,13 +48,13 @@ export default defineBuildConfig([
       esbuild: {
         minify: true,
       },
-      emitCJS: true,
     },
     hooks: {
       'rollup:options'(_, options) {
         options.plugins = [
           copy([
-            'src/views/**/*.ejs'
+            'src/static/**/*',
+            'src/views/**/*.ejs',
           ], {
             minify: true,
           }),

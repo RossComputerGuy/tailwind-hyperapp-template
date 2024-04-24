@@ -1,7 +1,5 @@
 import { createLogger, transports, format } from 'winston';
-
-const env = process.env.NODE_ENV ?? 'dev';
-const isDev = env.startsWith('dev');
+import { isDev } from './config';
 
 export default createLogger({
   level: isDev ? 'debug' : 'info',

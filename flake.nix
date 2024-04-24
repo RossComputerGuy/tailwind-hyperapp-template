@@ -25,7 +25,7 @@
 
           inherit nodejs;
 
-          npmDepsHash = "sha256-uaBCxphJk02f/8nlm6fndFMIWuwsKQ/9Bcwn1MODdY4=";
+          npmDepsHash = "sha256-Fdf4Z0Nio7w0qDAS6iazqr8SBzQ6R68tgOEXDb8Eax0=";
         };
 
         devShells.default = pkgs.mkShell {
