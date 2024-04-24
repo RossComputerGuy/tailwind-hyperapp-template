@@ -13,6 +13,9 @@
   "files": [
     "dist"
   ],
+  "bin": {
+    "serve": "./bin/serve.js"
+  },
   "scripts": {
     "build": "unbuild",
     "prepack": "unbuild",
