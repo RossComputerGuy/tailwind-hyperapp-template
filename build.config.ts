@@ -5,14 +5,13 @@ import { babel } from '@rollup/plugin-babel';
 import postcss from 'rollup-plugin-postcss';
 import tailwind from 'tailwindcss';
 import { defineBuildConfig } from 'unbuild';
-
-const env = process.env.NODE_ENV ?? 'dev';
+import { isDev, env } from './src/config';
 
 export default defineBuildConfig([
   {
     entries: ['./src/server', 'bin/serve'],
     declaration: true,
-    sourcemap: true,
+    sourcemap: isDev,
     rollup: {
       inlineDependencies: true,
       allowSyntheticDefaultImports: true,
@@ -29,7 +28,7 @@ export default defineBuildConfig([
   {
     entries: ['./src/client'],
     declaration: true,
-    sourcemap: true,
+    sourcemap: isDev,
     rollup: {
       inlineDependencies: true,
       allowSyntheticDefaultImports: true,

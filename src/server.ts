@@ -16,7 +16,7 @@ app.use((req, _, next) => {
   next();
 });
 
-if (isDev) app.use('/index.js.map', express.static(join(__dirname, 'client.mjs.map')));
+if (isDev) app.use('/client.mjs.map', express.static(join(__dirname, 'client.mjs.map')));
 app.use('/index.js', express.static(join(__dirname, 'client.mjs')));
 app.use('/styles.css', express.static(join(__dirname, 'styles.css')));
 app.use(express.static(join(__dirname, 'static')));
