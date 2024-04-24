@@ -16,6 +16,9 @@ export default defineBuildConfig([
     rollup: {
       inlineDependencies: true,
       allowSyntheticDefaultImports: true,
+      replace: {
+        'process.env.IS_SSR': '"true"',
+      },
       esbuild: {
         minify: true,
       },
@@ -35,6 +38,7 @@ export default defineBuildConfig([
       },
       replace: {
         'process.env.NODE_ENV': `"${env}"`,
+        'process.env.IS_SSR': '"false"',
       },
       resolve: {
         browser: true,

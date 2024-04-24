@@ -1,8 +1,10 @@
 import { getPort } from 'get-port-please';
 import { join } from 'path';
+import { renderToString } from 'hyperapp-render';
 import express from 'express';
 import logger from './logger';
 import { isDev } from './config';
+import { routes } from './app';
 
 const app = express();
 
@@ -19,7 +21,16 @@ app.use('/index.js', express.static(join(__dirname, 'client.mjs')));
 app.use('/styles.css', express.static(join(__dirname, 'styles.css')));
 app.use(express.static(join(__dirname, 'static')));
 
-app.use((_, res) => res.render('index', {}));
+app.use((req, res) => {
+  if (req.path in routes) {
+    logger.debug(`SSR rendering ${req.path}`);
+    res.render('index', {
+      rendered: renderToString(routes[req.path] ?? routes['404']),
+    });
+  } else {
+    res.render('index', { rendered: '', });
+  }
+});
 
 getPort({
   random: true,
