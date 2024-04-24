@@ -22,14 +22,15 @@ app.use('/styles.css', express.static(join(__dirname, 'styles.css')));
 app.use(express.static(join(__dirname, 'static')));
 
 app.use((req, res) => {
-  if (req.path in routes) {
-    logger.debug(`SSR rendering ${req.path}`);
-    res.render('index', {
-      rendered: renderToString(routes[req.path] ?? routes['404']),
-    });
-  } else {
-    res.render('index', { rendered: '', });
-  }
+  const view = routes[req.path] ?? routes['404'];
+  const status = req.path in routes ? 200 : 404;
+  res.status(status).render('index', {
+    rendered: renderToString(view({
+      url: {
+        pathname: req.path,
+      },
+    })),
+  });
 });
 
 getPort({
