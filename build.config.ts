@@ -10,7 +10,7 @@ const env = process.env.NODE_ENV ?? 'dev';
 
 export default defineBuildConfig([
   {
-    entries: ['./src/server'],
+    entries: ['./src/server', 'bin/serve'],
     declaration: true,
     sourcemap: true,
     rollup: {

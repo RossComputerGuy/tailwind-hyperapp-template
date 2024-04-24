@@ -10,12 +10,9 @@
   },
   "main": "./dist/server.cjs",
   "types": "./dist/server.d.ts",
-  "files": [
-    "dist",
-    "bin"
-  ],
+  "files": ["dist"],
   "bin": {
-    "serve": "./bin/serve.js"
+    "serve": "./dist/bin/serve.cjs"
   },
   "scripts": {
     "build": "unbuild",
