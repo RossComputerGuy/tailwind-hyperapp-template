@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-const path = require('path');
-const server = require(path.join(__dirname, '..', 'dist', 'server.cjs'));
+import path from 'path';
+const server = import(path.join(new URL('.', import.meta.url).pathname, '..', 'dist', 'server.cjs'));
 server();
